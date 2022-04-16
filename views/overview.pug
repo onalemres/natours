@@ -1,0 +1,274 @@
+extends base
+
+block content
+  main.main
+    section.section-button
+      .u-center-text.u-margin-bottom-big
+        h2.heading-secondary
+          | New York Travel Datas
+      .row
+        .col-1-of-1
+          a.btn-textt(href='#') Ice Cream
+          a.btn-textt(href='#') Bakery
+          a.btn-textt(href='#') Cookie
+          a.btn-textt(href='#') Sandwich
+          a.btn-textt(href='#') Steakhouse
+          a.btn-textt(href='#') Coffee
+          a.btn-textt(href='#') Museum
+          a.btn-textt(href='#') Hotel
+          a.btn-textt(href='#') Zoo
+          a.btn-textt(href='#') Restaurant
+          a.btn-textt(href='#') Hamburger
+          a.btn-textt(href='#') Transport
+          a.btn-textt(href='#') Goverment
+          a.btn-textt(href='#') Pizza
+          a.btn-textt(href='#') Donut
+          a.btn-textt(href='#') Park
+          a.btn-textt(href='#') Art
+          a.btn-textt(href='#') Galery
+          a.btn-textt(href='#') Nature
+
+    .card-container
+      each tour in tours
+        .card
+          .card__header
+            .card__picture
+              .card__picture-overlay &nbsp;
+              img.card__picture-img(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+            h3.heading-tertirary
+              span= tour.name
+
+          .card__details
+            h4.card__sub-heading= `${tour.difficulty} ${tour.duration}-day tour`
+            p.card__text= tour.summary
+            .card__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-map-pin')
+              span= tour.startLocation.description
+            .card__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-calendar')
+              span= tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
+            .card__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-flag')
+              span= `${tour.locations.length} stops`
+            .card__data
+              svg.card__icon
+                use(xlink:href='/img/icons.svg#icon-user')
+              span= `${tour.maxGroupSize} people`
+
+          .card__footer
+            p
+              span.card__footer-value= `$${tour.price}`
+              | 
+              span.card__footer-text per person
+            p.card__ratings
+              span.card__footer-value= tour.ratingsAverage
+              | 
+              span.card__footer-text= `rating (${tour.ratingsQuantity})`
+            a.btn.btn--green.btn--small(href=`/tour/${tour.slug}`) Details
+    section#section-tours.section-tours
+      .u-center-text.u-margin-bottom-big
+        h2.heading-secondary
+          | Explore leading categories
+      .row
+        .col-1-of-3
+          .cards
+            .cards__side.cards__side--front
+              .cards__picture.cards__picture--1
+              h4.cards__heading
+                span.cards__heading-span.cards__heading-span--1 İstanbul Turkey
+                h4
+                  .cards__details
+                    ul
+                      li 1 day travel
+                      li All Datas
+                      li Online Planning
+                      li 15+ maps
+                      li Difficulty: easy
+            .cards__side.cards__side--back.cards__side--back-1
+              .cards__cta
+                .cards__price-box
+                  p.cards__price-only Only
+                  p.cards__price-value $1
+                a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
+        .col-1-of-3
+          .cards
+            .cards__side.cards__side--front
+              .cards__picture.cards__picture--2
+              h4.cards__heading
+                span.cards__heading-span.cards__heading-span--2 Tokyo Japan
+                h4
+                  .cards__details
+                    ul
+                      li 7 day tour
+                      li All Datas
+                      li Online Planning
+                      li 15+ maps
+                      li Difficulty: medium
+            .cards__side.cards__side--back.cards__side--back-2
+              .cards__cta
+                .cards__price-box
+                  p.cards__price-only Only
+                  p.cards__price-value $7
+                a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
+        .col-1-of-3
+          .cards
+            .cards__side.cards__side--front
+              .cards__picture.cards__picture--3
+              h4.cards__heading
+                span.cards__heading-span.cards__heading-span--3 LONDON UNITED KINGDOM
+                h4
+                  .cards__details
+                    ul
+                      li 15 day tour
+                      li All Datas
+                      li Online Planning
+                      li 15+ maps
+                      li Difficulty: hard
+            .cards__side.cards__side--back.cards__side--back-3
+              .cards__cta
+                .cards__price-box
+                  p.cards__price-only Only
+                  p.cards__price-value $15
+                a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
+      .u-center-text.u-margin-top-huge
+        a.btn.btn--green(href='#') Discover all tours
+    section.section-meals
+      ul.meals-showcase.clearfix
+        li
+          figure.meal-photo
+            img(src='/img/1.jpg', alt='Korean bibimbap with egg and vegetables')
+        li
+          figure.meal-photo
+            img(src='/img/2.jpg', alt='Simple italian pizza with cherry tomatoes')
+        li
+          figure.meal-photo
+            img(src='/img/3.jpg', alt='Chicken breast steak with vegetables')
+        li
+          figure.meal-photo
+            img(src='/img/4.jpg', alt='Autumn pumpkin soup')
+      ul.meals-showcase.clearfix
+        li
+          figure.meal-photo
+            img(src='/img/5.jpg', alt='Paleo beef steak with vegetables')
+        li
+          figure.meal-photo
+            img(src='/img/6.jpg', alt='Healthy baguette with egg and vegetables')
+        li
+          figure.meal-photo
+            img(src='/img/7.jpg', alt='Burger with cheddar and bacon')
+        li
+          figure.meal-photo
+            img(src='/img/8.jpg', alt='Granola with cherries and strawberries')
+    section.section-about
+      .u-center-text.u-margin-bottom-big
+        h2.heading-secondary
+          | Exciting tours for adventurous people
+      .row
+        .col-1-of-2
+          h3.heading-tertiary.u-margin-bottom-small You&apos;re going to fall in love with nature
+          p.paragraph
+            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique totam alias, illo debitis cupiditate minus quisquam sed aspernatur molestias est officiis libero fuga veniam, qui expedita neque deleniti soluta hic?
+          h3.heading-tertiary.u-margin-bottom-small Live adventures like you never have before
+          p.paragraph
+            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ad ducimus architecto, animi in, est molestiae mollitia quos eligendi.
+          a.btn-text(href='#') Learn more &rarr;
+        .col-1-of-2
+          .composition
+            img.composition__photo.composition__photo--p1(src='img/nat-1-large.jpg', alt='Photo 1')
+            img.composition__photo.composition__photo--p2(src='img/nat-2-large.jpg', alt='Photo 2')
+            img.composition__photo.composition__photo--p3(src='img/nat-3-large.jpg', alt='Photo 3')
+    section.section-features
+      .row
+        .col-1-of-4
+          .feature-box
+            i.feature-box__icon.icon-basic-world
+            h3.heading-tertiary.u-margin-bottom-small Explore the world
+            p.feature-box__text
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus deleniti dolorum!
+        .col-1-of-4
+          .feature-box
+            i.feature-box__icon.icon-basic-compass
+            h3.heading-tertiary.u-margin-bottom-small Meet nature
+            p.feature-box__text
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus deleniti dolorum!
+        .col-1-of-4
+          .feature-box
+            i.feature-box__icon.icon-basic-map
+            h3.heading-tertiary.u-margin-bottom-small F&imath;nd your way
+            p.feature-box__text
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus deleniti dolorum!
+        .col-1-of-4
+          .feature-box
+            i.feature-box__icon.icon-basic-heart
+            h3.heading-tertiary.u-margin-bottom-small Live a healthier l&imath;fe
+            p.feature-box__text
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore necessitatibus deleniti dolorum!
+    section.section-stories
+      .bg-video
+        video.bg-video__content(autoplay='', muted='', loop='')
+          source(src='img/video.mp4', type='video/mp4')
+          source(src='img/video.webm', type='video/webm')
+          |                         Your browser is not supported!
+      .u-center-text.u-margin-bottom-big
+        h2.heading-secondary
+          | We make people genuinely happy
+      .row
+        .story
+          figure.story__shape
+            img.story__img(src='img/nat-8.jpg', alt='Person on a tour')
+            figcaption.story__caption Mary Smith
+          .story__text
+            h3.heading-tertiary.u-margin-bottom-small I had the best week with my family 
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quibusdam nihil expedita a, repellendus enim sit esse velit? Sed, exercitationem quidem similique enim quasi hic non dolore nobis omnis delectus ipsum mollitia dolorem iure, sint iste earum veniam pariatur repellat unde facilis officia consectetur doloremque.
+      .row
+        .story
+          figure.story__shape
+            img.story__img(src='img/nat-9.jpg', alt='Person on a tour')
+            figcaption.story__caption Jack Wilson
+          .story__text
+            h3.heading-tertiary.u-margin-bottom-small Wow! My life is completely different now
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quibusdam nihil expedita a, repellendus enim sit esse velit? Sed, exercitationem quidem similique enim quasi hic non dolore nobis omnis delectus ipsum mollitia dolorem iure, sint iste earum veniam pariatur repellat unde facilis officia consectetur doloremque.
+      .u-center-text.u-margin-top-huge
+        a.btn-text(href='#') Read all stories &rarr;
+    section.section-book
+      .row
+        .book
+          .book__form
+            form.form(action='#')
+              .u-margin-bottom-medium
+                h2.heading-secondary
+                  | Start booking now
+              .form__group
+                input#name.form__input(type='text', placeholder='Full name', required='')
+                label.form__label(for='name') Full name
+              .form__group
+                input#emHail.form__input(type='email', placeholder='Email address', required='')
+                label.form__label(for='email') Email address
+              .form__group.u-margin-bottom-medium
+                .form__radio-group
+                  input#small.form__radio-input(type='radio', name='size')
+                  label.form__radio-label(for='small')
+                    span.form__radio-button
+                    |                                             Small tour group
+                .form__radio-group
+                  input#large.form__radio-input(type='radio', name='size')
+                  label.form__radio-label(for='large')
+                    span.form__radio-button
+                    |                                             Large tour group
+              .form-group-button
+                a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
+    
+
+
+
+
+
+
+
+
+    
